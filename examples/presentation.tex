@@ -1,0 +1,279 @@
+\documentclass{beamer}
+
+\makeatletter
+  \def\beamer@calltheme#1#2#3{%
+    \def\beamer@themelist{#2}
+    \@for\beamer@themename:=\beamer@themelist\do
+    {\usepackage[{#1}]{\beamer@themelocation/#3\beamer@themename}}}
+
+  \def\usefolder#1{
+    \def\beamer@themelocation{#1}
+  }
+  \def\beamer@themelocation{}
+  
+\usefolder{Theme}
+\usetheme{NLeSC}
+\usepackage{tikz}
+\usepackage{grffile}
+\usetikzlibrary{arrows,shapes}
+\tikzstyle{every picture}+=[remember picture]
+\everymath{\displaystyle}
+\tikzstyle{na} = [baseline=-.5ex]
+
+
+\title{Kernel Estimation for a Non-Parametric Cointegrating Regression Model}
+\author{Derek Feng}
+\date{October 21st, 2011}
+
+\AtBeginSection{
+\begin{frame}
+\begin{center}
+\structure{\Huge \insertsection}
+\end{center}
+\end{frame}
+}
+
+\begin{document}
+  
+\frame{
+  \titlepage
+}
+
+\frame{
+ \frametitle{Outline}
+ \tableofcontents
+}
+
+\section{Introduction} % (fold)
+
+\subsection{Motivation} % (fold)
+
+\begin{frame}{Question}
+  \begin{center}
+    \structure{How do we model this relationship?}
+  \end{center}
+\end{frame}
+
+\begin{frame}{Solution?}
+  \begin{center}
+    Ordinary Least Squares Regression
+  \end{center}
+  \pause
+  \begin{align*}
+    y_t = \beta_0 + \beta_1 x_t + \epsilon_t
+  \end{align*}
+\end{frame}
+
+\begin{frame}[c]\frametitle{Results of performing an OLS regression}
+  \begin{tabular}{cccccc}
+  \hline
+   & Estimate & Std. Error & t value & p value & \\
+  \hline
+  $\beta_0$ & 1.595 & 0.526 & 3.028 & 0.0028 & \textcolor<2>{red!70!bg}{**}\\
+  \hline
+  $\beta_1$ & 1.044 & 0.065 & -16.2 & $<2\text{e}16$ & \textcolor<2>{red!70!bg}{***}\\
+  \hline
+  \end{tabular}
+
+  Multiple R-squared: 0.5698, Adjusted R-squared: 0.5676
+\end{frame}
+
+\begin{frame}
+  \begin{center}
+    {\Huge no}
+    \pause
+    
+    \vspace{2cm}
+    
+    They were \alert{independent} random walks
+  \end{center}
+\end{frame}
+
+
+\begin{frame}[t]\frametitle{Why OLS doesn't hold with nonstationary processes}
+  
+  \begin{center}
+    \alert{
+    \uncover<2,4>{nonstationary}
+    \uncover<4>{$\neq$}
+    \uncover<3,4>{stationary}
+    } 
+  \end{center}
+  
+  \begin{equation*}
+    \alert<2>{y_t -\beta_0 + \beta_1 x_t} = \alert<3>{\epsilon_t}
+  \end{equation*}
+\end{frame}
+
+% \begin{frame}[c]\frametitle{Spurious Regression}
+%   In the limit as $n \rightarrow \infty$,
+%   \begin{itemize}
+%     \item<2-> The OLS estimator of $\beta_1$ does not converge to zero
+%     \item<3-> The OLS $t$-statistic for $\beta_1$ diverge to $\pm \infty$
+%     \item<4-> $R^2 \rightarrow 1$
+%   \end{itemize}
+% \end{frame}
+
+\begin{frame}
+  \begin{center}
+    {\Large however \dots}
+  \end{center}
+\end{frame}
+
+\begin{frame}[t]\frametitle{What if \dots}
+  \begin{equation*}
+    \alert{y_t -\beta_0 + \beta_1 x_t} = \epsilon_t
+  \end{equation*}
+\end{frame}
+
+\begin{frame}[c]\frametitle{Shortcomings}
+  % \begin{center}
+  %   Nonlinear Economic Model
+  %   % \uncover<2->{: Production Theory} 
+  % \end{center}
+    \begin{itemize}
+      \item<1-> Nonlinearity in economic processes
+      \item<3-> Relationship unchanged over an extended period of time
+    \end{itemize}
+    
+  \uncover<2>{\begin{example}{The Cobb Douglas production function}
+    \begin{equation*}
+      y = \phi x_1^{\alpha} x_2^{\beta}
+    \end{equation*}
+    where $y$ is the total production, $x_1$ is labour input and $x_2$ is capital input.
+  \end{example}}
+\end{frame}
+
+% THERE ARE A PLETHORA OF NONLINEAR MODELS
+
+\begin{frame}[c]\frametitle{Nonlinear cointegration model}
+  \begin{align*}
+    y_t = f(x_t) + \text{error}
+  \end{align*}
+  \begin{itemize}
+    \item $y_t, x_t$ nonstationary
+    \item $f$ nonlinear
+    \item \alert{stationary} error 
+  \end{itemize}
+  % where the error is \alert{stationary}.
+  
+\end{frame}
+
+\begin{frame}[c]\frametitle{Question}
+  \begin{center}
+    What is $f$?
+  \end{center}
+\end{frame}
+
+\begin{frame}[c]\frametitle{Parametric vs Non-Parametric}
+  \begin{columns}
+    \begin{column}{0.5\textwidth}
+      Parametric
+      \begin{itemize}
+        \item<2-> Misspecification
+      \end{itemize}
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      \uncover<3->{Non-Parametric}
+      \begin{itemize}
+        \item<4-> Let the data speak for itself
+      \end{itemize}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}[c]\frametitle{Nonlinear + Nonstationary}
+  \begin{center}
+    \begin{tabular}{ccc}
+     & Stationary & Nonstationary\\
+    Linear & -- & --\\
+    Nonlinear & -- & \checkmark\\
+    \end{tabular}
+  \end{center}
+\end{frame}
+
+
+\begin{frame}[c]\frametitle{Difficulties}
+  Nonstationary + Nonparametric =\alert{
+  \only<1>{?}\only<2,3>{wandering + }\only<3>{local behaviour}\only<4>{Difficult}\only<5>{Reduced rate of convergence}\only<6>{New techniques required}
+  }
+\end{frame}
+
+\begin{frame}[t]\frametitle{Local Time}
+  \begin{definition}[Local Time]
+    The local time up to time $t$ at $x$ is
+    \begin{align*}
+      L(t,x) = \lim_{\epsilon \downarrow 0} \frac{1}{2 \epsilon} \int_{0}^{t} I(|B_s-a|) ds
+    \end{align*}
+    \pause
+    \alert{$L(t,x)$ is the amount of time that the path of $B_t$ spends at $x$ up to time $t$}
+  \end{definition}
+\end{frame}
+
+\begin{frame}[c]\frametitle{Kernel Regression}
+  the Nadaray-Watson Kernel Estimator:
+  \begin{align*}
+    \hat{f}(x) = \frac{\sum_{t=1}^{n} y_t K_h(x_t-x)}{\sum_{t=1}^{n} K_h(x_t-x)} 
+  \end{align*}
+  where
+  \begin{align*}
+    K_h(x) = \frac{1}{h} K(x/h)
+  \end{align*}
+  \pause
+  \begin{block}{Note}
+    h controls the size of the neighbourhood, and the rate at which $K_h$ decays
+  \end{block}
+\end{frame}
+
+\begin{frame}[t]{The Equation}
+  
+  \begin{equation*}
+    y_t
+    = 
+    f(x_t) + u_t
+  \end{equation*}
+  
+  \begin{itemize}
+    \item $x_t = \sum_{j=1}^{t} \epsilon_j,\quad \epsilon_{j}\sim iid(0,1)$
+    \item Nonparametric estimator of $f$: NW Kernel Estimator.
+    \item \alert{$u_t = ?$}
+    % \item \alert{The choice of $u_t$ is important - depends on environment.}
+  \end{itemize}
+
+\end{frame}
+
+\begin{frame}[c]\frametitle{Previous work}
+  \begin{itemize}[<+->]
+    \item Wang, Phillips (2009): error process as a \alert{martingale difference sequence}
+    \item We consider the error process as a \alert{linear process} 
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[t]{Linear Process}
+  \begin{definition}[Linear Process]
+    Let $u_t$ be defined by \[ u_t = \sum_{j=0}^{\infty} \phi_j \epsilon_{t-j}, \quad t \geq 1 \] where $\{\epsilon_i\}$ is a sequence of iid random variables with mean $0$ and variance $1$.
+  \end{definition}
+  \begin{itemize}
+    \item<2-> linear aggregation of random shocks
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[c]\frametitle{Methodology}
+  \begin{align*}
+    y_t = f(x_t) + u_t
+  \end{align*}
+  Recall the kernel estimator:
+  \begin{align*}
+    \hat{f}(x) = \frac{\sum_{t=1}^{n} y_t K_h(x_t-x)}{\sum_{t=1}^{n} K_h(x_t-x)} 
+  \end{align*}
+\end{frame}
+\begin{frame}[c]\frametitle{Methodology}
+  \begin{equation*}
+    \hat{f}(x) - f(x) = \frac{\alert<3,5>{\sum_{t=1}^n u_t K_h(x_t - x)}}{\alert<3,4>{\sum_{t=1}^n K_h(x_t - x)}} + \alert<2>{\frac{\sum_{t=1}^n (f(x_t)-f(x)) K_h(x_t - x)}{\sum_{t=1}^n K_h(x_t - x)}}
+  \end{equation*}
+\end{frame}
+
+
+% section (end)
+
+\end{document}
