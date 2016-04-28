@@ -1,6 +1,8 @@
 # Specify source tex files here
 #TEX_SRCS=examples/beamerexample-conference-talk.tex
-TEX_SRCS=examples/presentation.tex
+#TEX_SRCS=examples/presentation.tex
+TEX_SRCS=examples/lipsum.tex
+
 
 # The following variables may be overridden on the make command line in
 PERL := perl
@@ -9,7 +11,7 @@ BUILD_DIR := build
 PDF_DIR := pdf
 
 #TEXINPUTS=.//:$TEXINPUTS pdflatex ./myfile.tex
-LATEXMK_CMD=TEXINPUTS=.//:"$$TEXINPUTS:nlesc-beamer" $(LATEXMK) -pdf -pdflatex="xelatex %O %S"
+LATEXMK_CMD=TEXINPUTS=".//:$$TEXINPUTS:nlesc-beamer" $(LATEXMK) -pdf -pdflatex="xelatex %O %S"
 
 .DEFAULT: all
 .PHONY: all
