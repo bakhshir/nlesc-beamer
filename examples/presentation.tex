@@ -1,28 +1,31 @@
 \documentclass{beamer}
 
-\makeatletter
-  \def\beamer@calltheme#1#2#3{%
-    \def\beamer@themelist{#2}
-    \@for\beamer@themename:=\beamer@themelist\do
-    {\usepackage[{#1}]{\beamer@themelocation/#3\beamer@themename}}}
+% \makeatletter
+%   \def\beamer@calltheme#1#2#3{%
+%     \def\beamer@themelist{#2}
+%     \@for\beamer@themename:=\beamer@themelist\do
+%     {\usepackage[{#1}]{\beamer@themelocation/#3\beamer@themename}}}
+% 
+%   \def\usefolder#1{
+%     \def\beamer@themelocation{#1}
+%   }
+%   \def\beamer@themelocation{}
+% \makeatother
 
-  \def\usefolder#1{
-    \def\beamer@themelocation{#1}
-  }
-  \def\beamer@themelocation{}
-  
-\usefolder{Theme}
+% \usefolder{Theme}
 \usetheme{NLeSC}
 \usepackage{tikz}
-\usepackage{grffile}
+% \usepackage{grffile}
 \usetikzlibrary{arrows,shapes}
 \tikzstyle{every picture}+=[remember picture]
 \everymath{\displaystyle}
 \tikzstyle{na} = [baseline=-.5ex]
 
 
-\title{Kernel Estimation for a Non-Parametric Cointegrating Regression Model}
-\author{Derek Feng}
+\title{Pushing the boundaries of
+weather and climate 
+research}
+\author{The Author}
 \date{October 21st, 2011}
 
 \AtBeginSection{
@@ -34,7 +37,10 @@
 }
 
 \begin{document}
-  
+
+
+
+
 \frame{
   \titlepage
 }
@@ -43,6 +49,8 @@
  \frametitle{Outline}
  \tableofcontents
 }
+
+  
 
 \section{Introduction} % (fold)
 
@@ -221,7 +229,7 @@
   \end{align*}
   \pause
   \begin{block}{Note}
-    h controls the size of the neighbourhood, and the rate at which $K_h$ decays
+    $h$ controls the size of the neighbourhood, and the rate at which $K_h$ decays
   \end{block}
 \end{frame}
 
