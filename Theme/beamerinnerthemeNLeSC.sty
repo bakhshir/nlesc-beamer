@@ -1,20 +1,22 @@
 % we use default arial font
 \usepackage[T1]{fontenc}
 \usepackage[scaled]{uarial}
+% \usepackage[margin=1in]{geometry}
  
 \usepackage{tikz}
 \usepackage{hyphenat}
 % In essence we want the vertical pitch to be such that there are 30 steps.
 % This is based on the PowerPoint template sizes.
 %
-\newlength{\cam@inner@pitch} \setlength{\cam@inner@pitch}{0.0333333\paperheight} 
+\newlength{\cam@inner@pitch} 
+\setlength{\cam@inner@pitch}{0.0333333\paperheight} 
 
 % The NLeSC logo
 \pgfdeclareimage[height=2\cam@inner@pitch]{beamertitlelogoNLeSC}{media/image3.png}
 \pgfdeclareimage[height=2\cam@inner@pitch]{beamertitlelogoNWO}{media/image2.png}
 \pgfdeclareimage[width=\paperwidth,height=\paperheight]{mybackground}{media/image9.png}
 % \pgfdeclareimage[width=\paperwidth]{beamertitleBG}{media/image1.png}
-\pgfdeclareimage[width=\paperwidth,height=\paperheight]{beamertitleBG}{media/title_bg.pdf}
+\pgfdeclareimage[width=\paperwidth]{beamertitleBG}{media/title_bg.pdf}
 
 
 \mode<presentation>
@@ -85,7 +87,7 @@
   \start@fullpage{title page canvas}
         \begin{picture}(0,0)
 
-            \put(-21,-214){ %(-18,-270){%
+            \put(-21,-229){ %(-18,-270){%
                 \pgfuseimage{beamertitleBG}
             }
             \end{picture}

@@ -1,7 +1,7 @@
-# Specify source tex files here
-#TEX_SRCS=examples/beamerexample-conference-talk.tex
-#TEX_SRCS=examples/presentation.tex
-TEX_SRCS=examples/lipsum.tex
+#
+# 'make'        build presentation file with pdflatex 
+# 'make clean'  removes pdf and build folders
+#
 
 
 # The following variables may be overridden on the make command line in
@@ -10,11 +10,20 @@ LATEXMK := $(PERL) scripts/latexmk.pl
 BUILD_DIR := build
 PDF_DIR := pdf
 
+
+# Specify source tex files here
+TEX_SRCS=examples/presentation.tex
+#TEX_SRCS=examples/beamerexample-conference-talk.tex
+#TEX_SRCS=examples/lipsum.tex
+
+
+#Latex command
 #TEXINPUTS=.//:$TEXINPUTS pdflatex ./myfile.tex
-LATEXMK_CMD=TEXINPUTS=".//:$$TEXINPUTS:nlesc-beamer" $(LATEXMK) -pdf -pdflatex="xelatex %O %S"
+LATEXMK_CMD=TEXINPUTS=".//:$$TEXINPUTS:nlesc-beamer" $(LATEXMK) -pdf -pdflatex="pdflatex %O %S"
 
 .DEFAULT: all
 .PHONY: all
+
 all: $(addprefix $(PDF_DIR)/, $(TEX_SRCS:.tex=.pdf))
 
 .PHONY: clean
@@ -26,3 +35,5 @@ $(PDF_DIR)/%.pdf: %.tex
 	$(LATEXMK_CMD) -outdir="$(BUILD_DIR)/$*" "$<"
 	mkdir -p "$(dir $@)"
 	cp "$(BUILD_DIR)/$*/$(notdir $*).pdf" "$@"
+
+    

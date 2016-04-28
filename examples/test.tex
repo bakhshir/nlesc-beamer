@@ -1,0 +1,58 @@
+\documentclass{beamer}
+
+% \makeatletter
+%   \def\beamer@calltheme#1#2#3{%
+%     \def\beamer@themelist{#2}
+%     \@for\beamer@themename:=\beamer@themelist\do
+%     {\usepackage[{#1}]{\beamer@themelocation/#3\beamer@themename}}}
+% 
+%   \def\usefolder#1{
+%     \def\beamer@themelocation{#1}
+%   }
+%   \def\beamer@themelocation{}
+% \makeatother
+
+% \usefolder{Theme}
+\usetheme{NLeSC}
+\usepackage{tikz}
+% \usepackage{grffile}
+\usetikzlibrary{arrows,shapes}
+\tikzstyle{every picture}+=[remember picture]
+\everymath{\displaystyle}
+\tikzstyle{na} = [baseline=-.5ex]
+
+
+
+
+\title{Pushing the boundaries of
+weather and climate 
+research}
+\author{The Author}
+\date{October 21st, 2011}
+
+\AtBeginSection{
+\begin{frame}
+\begin{center}
+\structure{\Huge \insertsection}
+\end{center}
+\end{frame}
+}
+
+\begin{document}
+
+
+
+
+
+\frame{
+  \titlepage
+}
+
+\frame{
+ \frametitle{Outline}
+ \tableofcontents
+}
+
+  
+  
+\end{document}
