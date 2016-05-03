@@ -1,6 +1,22 @@
+% This is the color theme file of the NLeSC theme.
+% 
+%----------------------------------------------------------------------------------------------------------------------------------
+
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{beamercolorthemeNLeSC}[2016/04/28 v1.0.0 NLeSC Beamer Theme]
+
+%----------------------------------------------------------------------------------------------------------------------------------
+% 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Theme-required packages.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \usepackage{corecolours}
 
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Theme options and definitions
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \def\beamer@theme@base@blue{
   \definecolor{NLeSCCore}{named}{NLeSCCoreBlue}
@@ -17,32 +33,45 @@
 \DeclareOptionBeamer{base}{\csname beamer@theme@base@#1\endcsname}
 \ProcessOptionsBeamer
 
-\mode<presentation>
 
-\setbeamercolor*{normal text}{fg=NLeSCCoreBlack,bg=NLeSCCore}
-\setbeamercolor*{structure}{fg=NLeSCCoreBlue}
-\setbeamercolor*{math text}{fg=NLeSCCoreBlue}
-\setbeamercolor*{math text displayed}{fg=NLeSCCoreBlue}
+%----------------------------------------------------------------------------------------------------------------------------------
 
-\setbeamercolor*{palette primary}{fg=white,bg=NLeSCCore}
-\setbeamercolor*{palette secondry}{fg=white,bg=NLeSCCore}
-\setbeamercolor*{palette tertiary}{bg=white,fg=NLeSCCore}
-\setbeamercolor*{palette quaternary}{fg=white,bg=NLeSCCore}
+% beamer specific options
 
-\setbeamercolor*{title}{fg=black,bg=NLeSCCore}
-\setbeamercolor*{author}{fg=white,bg=NLeSCCore}
-% \setbeamercolor*{institute}{parent=author}
-\setbeamercolor*{date}{fg=black,bg=NLeSCCore}
-% \setbeamercolor*{abstract}{parent=author}
+\mode<presentation>%refers to the first four modes (beamer,handout,second and trans). That is, to all modes except the article mode
+    {
 
-\setbeamercolor*{lower separation line head}{fg=white,bg=NLeSCCore}
+%----------------------------------------------------------------------------------------------------------------------------------
 
-\setbeamercolor*{special page canvas}{bg=NLeSCCore}
-\setbeamercolor*{special page separator upper}{bg=NLeSCCore}
-\setbeamercolor*{special page separator lower}{bg=NLeSCCore}
-\setbeamercolor*{special page title}{fg=white,bg=NLeSCCore}
+% colors
+%% defining colors 
 
-% \setbeamercolor*{block body}{bg=NLeSCCore!20!normal text.bg,fg=NLeSCCoreBlack}
- \setbeamercolor*{alerted text}{fg=NLeSCCoreBlack!60!NLeSCCore}
+    \setbeamercolor*{normal text}{fg=NLeSCCoreBlack,bg=NLeSCCore}
+    \setbeamercolor*{structure}{fg=NLeSCCoreBlue}
+    \setbeamercolor*{math text}{fg=NLeSCCoreBlue}
+    \setbeamercolor*{math text displayed}{fg=NLeSCCoreBlue}
+    
+    \setbeamercolor*{palette primary}{fg=white,bg=NLeSCCore}
+    \setbeamercolor*{palette secondry}{fg=white,bg=NLeSCCore}
+    \setbeamercolor*{palette tertiary}{bg=white,fg=NLeSCCore}
+    \setbeamercolor*{palette quaternary}{fg=white,bg=NLeSCCore}
+    
+    \setbeamercolor*{title}{fg=black,bg=NLeSCCore}
+    \setbeamercolor*{author}{fg=white,bg=NLeSCCore}
+    % \setbeamercolor*{institute}{parent=author}
+    \setbeamercolor*{date}{fg=black,bg=NLeSCCore}
+    % \setbeamercolor*{abstract}{parent=author}
+    
+    \setbeamercolor*{lower separation line head}{fg=white,bg=NLeSCCore}
+    
+%     \setbeamercolor*{special page canvas}{bg=NLeSCCore}
+%     \setbeamercolor*{special page separator upper}{bg=NLeSCCore}
+%     \setbeamercolor*{special page separator lower}{bg=NLeSCCore}
+%     \setbeamercolor*{special page title}{fg=white,bg=NLeSCCore}
+    
+    % \setbeamercolor*{block body}{bg=NLeSCCore!20!normal text.bg,fg=NLeSCCoreBlack}
+     \setbeamercolor*{alerted text}{fg=NLeSCCoreBlack!60!NLeSCCore}
+
+}
 
 \mode<all>
