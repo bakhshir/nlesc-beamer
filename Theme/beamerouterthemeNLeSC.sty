@@ -1,6 +1,37 @@
-% Use the grid pitches from 
-% http://www.admin.cam.ac.uk/offices/communications/services/identityguidelines/guidelines-graphiclanguage.pdf
+% This is the outer theme file of the NLeSC theme.
+%
+% Description: An outer theme dictates the overall layout of frames, 
+% i.e., specifies where any navigational elements should go (like a mini table of contents or navigational mini frames), 
+% and what they should look like. Typically, an outer theme specifies how the following elements are rendered:
+% the head- and footline, the sidebars, the logo and the frame title.
 % 
+% 
+% Copyright 2016 @ NLeSC
+% 
+% Licensed under the Apache License, Version 2.0 (the "License");
+% you may not use this file except in compliance with the License.
+% You may obtain a copy of the License at
+% 
+%     http://www.apache.org/licenses/LICENSE-2.0
+% 
+% Unless required by applicable law or agreed to in writing, software
+% distributed under the License is distributed on an "AS IS" BASIS,
+% WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+% See the License for the specific language governing permissions and
+% limitations under the License.
+%
+%----------------------------------------------------------------------------------------------------------------------------------
+
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{beamerinnerthemeNLeSC}[2016/04/28 v1.0.0 NLeSC Beamer Theme]
+
+%----------------------------------------------------------------------------------------------------------------------------------
+% 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Theme-required packages.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
 % In essence we want the vertical pitch to be such that there are 30 steps.
 % This is based on the PowerPoint template sizes.
 %
@@ -21,7 +52,11 @@
 \pgfdeclareimage[height=1.2\cam@outer@pitch]{beamerlogoNLeSC}{media/image7.png}
 
 
-\mode<presentation>
+
+% beamer specific options
+
+               \mode<presentation> % refers to the first four modes (beamer,handout,second and trans). That is, to all modes except the article mode
+{
 
 % Mini frames
 
@@ -184,6 +219,10 @@
   \nointerlineskip
   \insertnote
 }
+
+}
+
+%----------------------------------------------------------------------------------------------------------------------------------
 
 \mode<all>
 
